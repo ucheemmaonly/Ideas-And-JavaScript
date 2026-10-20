@@ -54,3 +54,30 @@ function flatten(arr) {
 
 console.log('2. flatten example:', flatten([1, [2, [3, [4]]], 5]));
 console.log('2. flatten extra test:', flatten([[], 1, [2, [], [3]]]));
+
+// 3. groupAnagrams
+// Tested with the provided words and an extra test using "arc" and "car".
+function groupAnagrams(words) {
+  const groups = new Map();
+
+  for (const word of words) {
+    const key = word.toLowerCase().split('').sort().join('');
+
+    if (!groups.has(key)) {
+      groups.set(key, []);
+    }
+
+    groups.get(key).push(word);
+  }
+
+  return Array.from(groups.values());
+}
+
+console.log(
+  '3. groupAnagrams example:',
+  groupAnagrams(['eat', 'tea', 'tan', 'ate', 'nat', 'bat'])
+);
+console.log(
+  '3. groupAnagrams extra test:',
+  groupAnagrams(['arc', 'car', 'elbow', 'below'])
+);
